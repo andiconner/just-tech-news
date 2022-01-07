@@ -32,7 +32,7 @@ router.get('/:id', (req, res) => {
             res.status(500).json(err);
         });
 });
-
+//post to create a new user
 router.post('/', (req, res) => {
     // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
     User.create({
@@ -46,7 +46,8 @@ router.post('/', (req, res) => {
             res.status(500).json(err);
         });
 });
-
+//post to create the login route and authentication
+//A GET method carries the request parameter appended in the URL string, whereas a POST method carries the request parameter in req.body, which makes it a more secure way of transferring data from the client to the server.
 router.post('/login', (req, res) => {
     // expects {email: 'lernantino@gmail.com', password: 'password1234'}
     User.findOne({
