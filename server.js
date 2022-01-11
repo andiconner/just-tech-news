@@ -14,6 +14,6 @@ app.use(routes);
 // turn on connection to db and server
 //By forcing the sync method to true, we will make the tables re-create if there are any association changes.
 //This allows the table to be overwritten and re-created.
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log('Now listening'));
 });
