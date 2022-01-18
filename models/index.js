@@ -10,29 +10,33 @@ User.hasMany(Post, {
 });
 
 Post.belongsTo(User, {
-  foreignKey: 'user_id'
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
 });
 
-//votes associations MANY-TO-MANY
-//With these two .belongsToMany() methods in place, we're allowing both the User and Post models to query each other's information in the context of a vote
 User.belongsToMany(Post, {
   through: Vote,
   as: 'voted_posts',
-  foreignKey: 'user_id'
+
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
 });
 
 Post.belongsToMany(User, {
   through: Vote,
   as: 'voted_posts',
-  foreignKey: 'post_id'
+  foreignKey: 'post_id',
+  onDelete: 'SET NULL'
 });
 
 Vote.belongsTo(User, {
-  foreignKey: 'user_id'
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
 });
 
 Vote.belongsTo(Post, {
-  foreignKey: 'post_id'
+  foreignKey: 'post_id',
+  onDelete: 'SET NULL'
 });
 
 User.hasMany(Vote, {
@@ -43,18 +47,19 @@ Post.hasMany(Vote, {
   foreignKey: 'post_id'
 });
 
-// create associations for "comment"
-
 Comment.belongsTo(User, {
-  foreignKey: 'user_id'
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
 });
 
 Comment.belongsTo(Post, {
-  foreignKey: 'post_id'
+  foreignKey: 'post_id',
+  onDelete: 'SET NULL'
 });
 
 User.hasMany(Comment, {
-  foreignKey: 'user_id'
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
 });
 
 Post.hasMany(Comment, {
